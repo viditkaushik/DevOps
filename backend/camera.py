@@ -9,8 +9,13 @@ from flask_cors import CORS
 import json
 import re 
 
-app = Flask(__name__)
-CORS(app, origins="http://127.0.0.1:5501")
+# Get absolute path to the frontend directory relative to this file
+backend_dir = os.path.dirname(os.path.abspath(__file__))
+frontend_dir = os.path.abspath(os.path.join(backend_dir, "..", "frontend"))
+
+app = Flask(__name__, static_folder=frontend_dir, static_url_path='')
+CORS(app, origins=["http://127.0.0.1:5501", "http://127.0.0.1:5000", "http://localhost:5000"])
+
 # Automatically create the folder to store images
 CAPTURE_FOLDER = "captured_images"
 if not os.path.exists(CAPTURE_FOLDER):
@@ -316,6 +321,10 @@ def get_all_summaries():
 @app.route('/scanned_texts', methods=['GET'])
 def get_scanned_texts():
     return jsonify({"texts": scanning_state["captured_texts"]})
+
+@app.route('/')
+def home():
+    return app.send_static_file('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port='5000')

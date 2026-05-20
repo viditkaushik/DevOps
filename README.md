@@ -40,6 +40,40 @@ This repository includes:
 2. regex.py — Processes extracted text and applies masking for sensitive information.
 3. test.py —  Provides endpoints to scan documents via webcam or upload, extracts text with OCR, and summarizes using Gemini AI.
 
+### Getting Started
+
+#### Prerequisites
+- Python 3.11 or higher
+- pip (Python package manager)
+
+#### Installation & Running the Application
+
+1. **Clone the Repository**
+   ```bash
+   git clone <repository-url>
+   cd Prizm
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Run the Backend Server**
+   ```bash
+   python backend/camera.py
+   ```
+
+4. **Access the Home Page**
+   - Open your web browser and navigate to: `http://localhost:5000`
+   - The home page (index.html) will load automatically
+   - You can then navigate to Camera Scanning, Chatbot, or Upload pages from the home page
+
+#### Application URLs
+- **Home Page**: `http://localhost:5000/` or `http://localhost:5000/index.html`
+- **Document Scanning**: `http://localhost:5000/camera.html`
+- **AI Chatbot**: `http://localhost:5000/chatbot.html`
+- **Document Upload**: `http://localhost:5000/upload.html`
 
 ### Accessibility Commitments
 1. High-contrast color palette and adjustable font sizes
